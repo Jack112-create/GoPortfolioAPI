@@ -1,20 +1,16 @@
 package main
 
 import (
+	"github.com/Jack112-create/GoPortfolioAPI/internal/router"
 	"github.com/gofiber/fiber/v2"
 )
 
-type GithubProfile struct {
-	Login string `json:"login"`
-}
-
 func main() {
+	// Initialize app
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		// request := fiber.Get("https://api.github.com/users/Jack112-create")
-		return c.SendString("Hello, World!")
-	})
+	// Setup routes
+	router.SetupRoutes(app)
 
 	app.Listen(":3000")
 }
