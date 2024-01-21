@@ -1,4 +1,4 @@
-package profile
+package model
 
 type GithubProfile struct {
 	Login        string `json:"login"`
@@ -6,5 +6,3 @@ type GithubProfile struct {
 	Repositories string `json:"repos_url"`
 	URL          string `json:"url"`
 }
-
-var GithubUser GithubProfile
