@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -32,10 +31,6 @@ func main() {
 		KeyLookup: "cookie:access_token",
 		Validator: middleware.ValidateAPIKey,
 	}))
-
-	if middleware.ApiKey == "key" {
-		fmt.Println("Match")
-	}
 
 	// Setup routes
 	router.SetupRoutes(app)
