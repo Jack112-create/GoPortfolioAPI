@@ -7,6 +7,7 @@ import (
 	"github.com/Jack112-create/GoPortfolioAPI/middleware"
 	"github.com/Jack112-create/GoPortfolioAPI/router"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/keyauth"
 	"github.com/joho/godotenv"
 )
 
@@ -26,10 +27,10 @@ func main() {
 	middleware.ApiKey = os.Getenv("KEY")
 
 	// Key authentication
-	// app.Use(keyauth.New(keyauth.Config{
-	// 	KeyLookup: "cookie:access_token",
-	// 	Validator: middleware.ValidateAPIKey,
-	// }))
+	app.Use(keyauth.New(keyauth.Config{
+		KeyLookup: "cookie:access_token",
+		Validator: middleware.ValidateAPIKey,
+	}))
 
 	// Setup routes
 	router.SetupRoutes(app)
