@@ -14,9 +14,9 @@ var (
 
 func ValidateAPIKey(c *fiber.Ctx, key string) (bool, error) {
 	hashedAPIKey := sha256.Sum256([]byte(ApiKey))
-	haskedKey := sha256.Sum256([]byte(key))
+	hashedKey := sha256.Sum256([]byte(key))
 
-	if subtle.ConstantTimeCompare(hashedAPIKey[:], haskedKey[:]) == 1 {
+	if subtle.ConstantTimeCompare(hashedAPIKey[:], hashedKey[:]) == 1 {
 		return true, nil
 	}
 
